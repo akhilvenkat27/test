@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+
+    body {
+      margin: 0;
+      overflow-y: hidden;
+    }
+
+    .left-login {
+      margin: 0%;
+      width: 100%;
+      height: 100%;
+    }
+
+    .border-none {
+      border: none;
+    }
+    .hover-effect {
+        -ms-transform: scale(1); /* IE 9 */
+        -webkit-transform: scale(1); /* Safari 3-8 */
+        transform: scale(1);
+        transition: transform 0.3s ease; 
+        border: none;
+      }
+
+      .hover-effect:hover {
+          -ms-transform: scale(1.5); /* IE 9 */
+          -webkit-transform: scale(1.5); 
+          transform: scale(1.09);
+      }
+      @media (min-width: 1600px) {
+            .bg-color {
+              background-color: #edf6ff;
+            }
+        
+        }
+      .display-slide
+      {
+        display: none;
+      }
+      
+      @media (min-width:1600px)
+      {
+          .display-slide
+          {
+            display: block;
+          }
+      }
+      .alert
+      {
+        display: none;
+      }
+  </style>
+</head>
+<body>
+
+<div class="d-flex flex-row " style="height: 100%; margin: 0%;">
+
+  <div class="border left-login d-none d-lg-block " >
+ 
+  <div class="display-slide"></div>
+  
+
+  <!--=========================== Slide Show Starts ==================================-->
+
+    <div id="carouselExampleSlidesOnly " class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner display-slide">
+        <div class="carousel-item active" data-bs-interval="4000">
+          <a href="https://darwinbox.com"><img src="assets/Slide_Show1.jpg" class="d-block w-100" alt="..."></a>
+        </div>
+        <div class="carousel-item" data-bs-interval="4000">
+          <a href="https://darwinbox.com"><img src="assets/Slide_Show2.jpg" class="d-block w-100" alt="..."></a>
+        </div>
+        <div class="carousel-item" data-bs-interval="4000">
+          <a href="https://darwinbox.com"><img src="assets/Slide_Show3.jpg" class="d-block w-100" alt="..."></a>
+        </div>
+        <div class="carousel-item" data-bs-interval="4000">
+          <a href="https://darwinbox.com"><img src="assets/Slide_Show4.jpeg" class="d-block w-100" alt="..."></a>
+        </div>
+      </div>
+    </div>
+  <!--=========================== Slide Show Ends==================================-->
+
+  </div>
+
+
+  <div class=" p-2 justify-content-center bg-color" style="width: 100%; height:100vh; ">
+
+    <!--============= Login Section Starts ==============================-->
+    <div class="d-flex flex-row mb-3 justify-content-between">
+      <div class="p-2"></div>
+      <div class="p-2">
+
+        <div class="d-flex flex-row mb-3 justify-content-between shadow border rounded-4" style="margin-top: 30%; background-color: white;">
+          <div class="p-2"></div>
+
+          <div class="p-2">
+            <div class="card border-none" style="width: 18rem;">
+              <img src="assets/very-small-logo.png" class="card-img-top" alt="...">
+            </div>
+          </div>
+          <div class="p-2"></div>
+
+        </div>
+
+        <div id="error_message" style="display: none;"><%= login_error %></div>
+        <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert" id="alert">
+          <strong>Opps!</strong> Invalid Login Credentials.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      
+        <div class="card shadow border-none rounded-4" style="width: 35rem;">
+          <div class="card-body">
+
+            <div class="card text-center border-none">
+
+              <div class="card-header">
+
+
+                <div class="d-flex flex-row justify-content-center">
+                  <div class="p-2"></div>
+                  <div class="p-2">
+                    <ul class="nav nav-underline" id="myTab" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" style="color: #003b73;" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Candidate</button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" style="color: #fc6a6b;" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Recruiter</button>
+                      </li>
+                    </ul>
+                    
+                  </div>
+                  <div class="p-2"></div>
+                </div>
+
+
+
+              </div>
+              <div class="card-body ">
+
+
+                <div class="tab-content" id="myTabContent">
+
+                  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+
+                    <!--===================== Candidate Form Starts =============================-->
+                    <form action="/Candidate_Verify" method="POST">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="Candidate_ID" placeholder="name@example.com" name="Candidate_ID" required>
+                      <label for="Candidate_ID" > Candidate_ID </label>
+                    </div>
+                    <div class="form-floating">
+                      <input type="password" class="form-control" id="Candidate_Password" placeholder="Password" name="Candidate_Password" required>
+                      <label for="Candidate_Password"> Password </label>
+                    </div>
+                    <br>
+                    <button style="background-color: #003b73; color: #ffffff; border: none;" class="btn hover-effect" name="Candidate_Submit"><i class="bi bi-box-arrow-in-right"></i> Login as Candidate</button>
+                    
+
+                  </form>
+                    <!--===================== Candidate Form Ends =============================-->
+
+                  </div>
+
+                  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                    <!--===================== Recruiter Form Starts =============================-->
+
+                    <form action="/Recruiter_Verify" method="POST">
+                    <div class="form-floating mb-3">
+                      <input type="text" class="form-control" id="Recruiter_ID" placeholder="name@example.com" name="Recruiter_ID" required>
+                      <label for="Recruiter_ID"> Recruiter_Id </label>
+                    </div>
+                    <div class="form-floating">
+                      <input type="password" class="form-control" id="Recruiter_Password" placeholder="Password" name="Recruiter_Password" required>
+                      <label for="Recruiter_Password"> Password </label>
+                    </div>
+                    <br>
+                    <button style="background-color: #fc6a6b; color: white;  border: none;" class="btn hover-effect" name="Recruiter_Submit"><i class="bi bi-box-arrow-in-right"></i> Login as Recruiter</button>
+                  </form>
+                    <!--===================== Recruiter Form Ends =============================-->
+
+                  </div>
+                  
+
+
+                </div>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+          </div>
+        </div>
+        
+
+
+
+      </div>
+      <div class="p-2"></div>
+
+
+    </div>
+
+    <!--============= Login Section Ends ===========================-->
+
+  </div>
+</div>
+
+
+<script>
+var message = document.getElementById('error_message').innerHTML;
+console.log(message)
+if(message=="error")
+{
+  document.getElementById('alert').style.display='block';
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>

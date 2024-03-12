@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        body {
+            margin: 0;
+            padding-bottom: 100px; 
+            background-color: #edf6ff;
+        }
+        footer.footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #001035;
+            color: white;
+            padding: 20px 0;
+        }
+    
+        @media (min-width: 1500px) {
+            #dashboard-section {
+                display: block;
+            }
+            .not-available-message {
+                display: none;
+            }
+        
+        }
+        @media (max-width: 1500px) {
+            #dashboard-section {
+                display: none;
+            }
+            .not-available-message {
+                display: block;
+            }
+        
+        }
+        .bd-none
+        {
+            border: none;
+        }
+
+
+    </style>
+</head>
+<body>
+
+
+  <!--============= Navigation Section ===========================-->
+
+  <header class="p-3 mb-3 border-bottom shadow-sm sticky-top" style="background-color: white;" >
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center ">
+          <a href="Candidate_Home" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+
+              <img src="assets/home_logo.png" style="height: 45px; " >
+
+          </a>
+  
+          <ul class="nav nav-underline col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" >
+            <li><a href="Candidate_Dashboard" class="nav-link px-2 link-body-emphasis active" >Dashboard</a></li>
+            <li><a href="Candidate_Log" class="nav-link px-2 link-body-emphasis">Interview Log</a></li>
+            <li><a href="#" class="nav-link px-2 link-body-emphasis">Prepare</a></li>
+            <li><a href="#" class="nav-link px-2 link-body-emphasis">Smart Features</a></li>
+          </ul>
+  
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <button type="button" style="background-color: white; color: #0183ff; border: none;" class=" shadow btn btn-primary position-relative rounded-circle">
+              <i class="bi bi-bell"></i>
+              </span>
+            </button>
+          </form>
+  
+          <div class="dropdown text-end">
+            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://play-lh.googleusercontent.com/B88BIRfLaHsR4FY97MOs7l4rEfpgXnUMlqc1DUzaoBI0nLmADRNYTkBtnyo0mlC5hfE" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!--============= Navigation Section Ends ===========================-->
+
+
+
+    <!--================== Not available for small screens ==============-->
+
+
+    <div class="alert alert-warning not-available-message m-5 text-center" role="alert">
+      <i class="bi bi-exclamation-triangle"></i>   This Feature is only available for desktop versions.
+    </div>
+
+    <!--==================== Not available for small screens ============-->
+
+
+
+    <!--====================== Dashboard Starts =========================-->
+
+
+    <div class="d-flex flex-row m-3 flex-wrap" >
+
+        <!--================== Profile Section Starts ==================-->
+        
+
+        <div class="p-2 w-25 " id="dashboard-section">
+
+            <div class="rounded-3 shadow" style="background-color: white;">
+
+                <div class="d-flex flex-row mb-3 justify-content-between">
+
+                    <div class="p-2"></div>
+                    <div class="p-2 mt-2">
+                
+                        <div class="card"style="width: 15rem; border:none">
+                            <img class="rounded-circle card-img-top" src="https://img.freepik.com/premium-vector/anonymous-user-flat-icon-vector-illustration-with-long-shadow_520826-1932.jpg">
+                        </div>
+                        <br>
+                        <div class="card mb-3"style="width: 15rem; border:none">
+                            <div class="card text-center" style="border: none;">
+
+                                <div class="card-body">
+                                  <h4 class="card-title"><%= Candidate_details.Name %></h4>
+                                   
+                                  <p class="card-text"><b>Candidate ID:</b><br> <%= Candidate_details.ID %> <br> <b>Candidate Rating:</b><br> <%= Candidate_details.Rating %> <br> <b>Prefered Domain:</b> <br> <%= Candidate_details.Preferences.Domain %> <br> <b>Prefered Role:</b><br> <%= Candidate_details.Preferences.Role %> <br> <b>Current Status:</b><br><%=  Candidate_details.Current_Status %></p>
+                                  <a href="Candidate_Log"><button class="btn btn-primary rounded-5" style="background-color: white; color: #0183ff; border-color: #0183ff;"> Explore Interviews</button></a>
+                                </div>
+
+
+                              </div>                        
+                        </div>
+
+                    
+                    </div>
+
+                    <div class="p-2"></div>
+                
+                </div>
+
+            </div>
+
+            
+        </div>
+
+        <!--================== Profile Section Ends ==================-->
+
+        <!--================== User Statistics Section Starts ===========-->
+
+        <div class="p-2 w-75" id="dashboard-section">
+        
+
+            <div class="card-group">
+
+                <div class="card m-3 bd-none rounded-4 shadow">
+                  <div class="card-body text-center">
+                    <h5 class="card-title p-2">Overall Interviews</h5>
+                    <h1 class="card-text">14</h1>
+                  </div>
+                  <p class="card-text p-4"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+
+                <div class="card m-3 bd-none rounded-4 shadow">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Overall Confidence Rate<button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Measure of candidate confidence in Response, Problem Solving, Genuinity, Personal Information">
+                        <i class="bi bi-question-circle"></i>
+                      </button>     
+
+                    </h5>
+                    <h1 class="card-text">92%</h1>
+                  </div>
+                  <p class="card-text p-4"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+
+                <div class="card m-3 bd-none rounded-4 shadow">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">
+                        Overall Relevance Rate<button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Measure of candidate relevance percentage considering Response Correctness, Technical Knowledge">
+                            <i class="bi bi-question-circle"></i>
+                          </button>     
+                        </h5>
+
+                      <h1 class="card-text">83%</h1>
+                    </div>
+                    <p class="card-text p-4"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+
+            </div>
+
+            <div class="card-group">
+
+                <div class="card m-3 bd-none rounded-4 shadow" style="max-width: 25rem; ">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Overall Communicational Rate<button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Measure of candidate language Proficieny and Fluency">
+                        <i class="bi bi-question-circle"></i>
+                      </button>     
+
+                    </h5>
+                    <h1 class="card-text">77%</h1>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <div id="chart_div"></div>
+                  </div>
+                  <p class="card-text p-4"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+
+                <div class="card m-3 bd-none rounded-4 shadow">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Overall Growth Graph<button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Measure of candidate overall statistics considering end-to-end parameters reflected on graph">
+                        <i class="bi bi-question-circle"></i>
+                      </button>     
+
+                    </h5>
+                    <br>
+                    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                    <div id="GR"></div>
+                  </div>
+                  <p class="card-text p-4"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+
+
+
+            </div>
+
+            <div class="card-group mb-5">
+
+                <div class="card m-3 bd-none rounded-4 shadow" style="width:50%;">
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Technical Recommendations<button type="button" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="List of AI Recommendations based on candidate overall interview performance">
+                        <i class="bi bi-question-circle"></i>
+                      </button>     
+
+                    </h5>
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                <i class="bi bi-hdd-network"></i>&nbsp; Technologies
+                            </button>
+                          </h2>
+                          <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                
+                                <span class="badge rounded-pill" style="background-color: #0183ff;">Javascript</span>
+                                <span class="badge rounded-pill " style="background-color: #0183ff;">PHP</span>
+                                <span class="badge rounded-pill " style="background-color: #0183ff;">Mongo DB</span>
+
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                <i class="bi bi-code-slash"></i>&nbsp; Frameworks
+                            </button>
+                          </h2>
+                          <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                
+                                <span class="badge rounded-pill " style="background-color: #0183ff;">React Js</span>
+                                <span class="badge rounded-pill " style="background-color: #0183ff;">Angular Js</span>
+                                <span class="badge rounded-pill " style="background-color: #0183ff;">Laravel</span>
+                                <span class="badge rounded-pill " style="background-color: #0183ff;">Django</span>
+
+
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                <i class="bi bi-collection"></i> &nbsp; Topics
+                            </button>
+                          </h2>
+                          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                
+                                <span class="badge rounded-pill " style="background-color: #0183ff;">Graphs-DSA</span>
+                                <span class="badge rounded-pill " style="background-color: #0183ff;">Async-JS</span>
+                                <span class="badge rounded-pill " style="background-color: #0183ff;">Promises-JS</span>
+                                <span class="badge rounded-pill " style="background-color: #0183ff;">Sessions-PHP</span>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <p class="card-text p-4"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                </div>
+
+                <div class="card m-3 bd-none rounded-4 shadow">
+                  <div class="card-body text-center">
+                    <h5 class="card-title p-2">Report Nutshell</h5> 
+
+                      <div class="d-flex flex-row mb-3 justify-content-between">
+                        <div class="p-2"></div>
+                        <div class="p-2">
+
+                          <div class="alert alert-primary" role="alert">
+                            The Dashboard is crafted based on candidate interview using Artificial Intelligence where all the metrics are generated purely by GPT/similar without manual scoring. Conisder that GPT/similar may be inaccurate at times. The main theme of the Darwinview is to get each & every parameter at most possible with finest accuracy for well being of candidate.
+                          </div>
+                          Current Available Engine(s) : <span class="badge rounded-pill" style="background-color: #0183ff;">GPT-4</span>
+
+                        </div>
+                        <div class="p-2"></div>
+                      </div>
+
+                  </div>
+                </div>
+
+
+
+            </div>
+              
+        
+        </div>
+
+        <!-- ============== User Statistics Section Ends =================-->
+    </div>
+     
+    <!--====================== Dashboard Ends ===========================-->
+
+
+
+
+    <!-- Footer Section -->
+    <footer class="footer rounded-top-4">
+        <div class="container text-center">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><span style="color:white">Home</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><span style="color:white">Features</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><span style="color:white">Pricing</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><span style="color:white">FAQs</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><span style="color:white">About</span></a></li>
+            </ul>
+            <p class="text-center text-body-secondary"><span style="color:white">&copy; 2024 Darwinview, Inc</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script>
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(drawBasic);
+
+        function drawBasic() {
+
+            var data = new google.visualization.DataTable();
+            data.addColumn('number', 'X');
+            data.addColumn('number', 'Rate');
+
+            data.addRows([
+                [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
+                [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
+                [12, 30], [13, 40], [14, 42]
+            ]);
+
+            var options = {
+                hAxis: {
+                title: 'Interviews Attended'
+                },
+                vAxis: {
+                title: 'Overall Score (Max:100)'
+                }
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('GR'));
+
+            chart.draw(data, options);
+            }
+
+            google.charts.load('current', {packages: ['corechart', 'bar']});
+            google.charts.setOnLoadCallback(drawMultSeries);
+
+            function drawMultSeries() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Language','Language Usage'],
+                    ['English', 75],
+                    ['Hindi', 22],
+                ]);
+
+                var options = {
+                    title: 'Overall Detected Laguages',
+                    chartArea: {width: '50%'},
+                    hAxis: {
+                    title: 'Language Usage (Max : 100%)',
+                    minValue: 0
+                    },
+                    vAxis: {
+                    title: 'Language'
+                    }
+                };
+
+                var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+                chart.draw(data, options);
+                }
+    </script>
+    <script>
+                var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+                var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                    return new bootstrap.Tooltip(tooltipTriggerEl)
+                });
+    </script>
+
+    
+   
+</body>
+</html>

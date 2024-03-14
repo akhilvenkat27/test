@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <title><%= Entering_IID %></title>
+    <style>
+        #call {
+            width: 100%;
+            height: 100vh;
+        }
+        .chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            display: none; /* Initially hidden */
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .scrollable-div::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        .btn-animation
+        {
+          animation: mymove 4s infinite;
+          border-width: 2px;
+        }
+        @keyframes mymove {
+            25% {border-color: rgb(161, 121, 199);}
+            50% {border-color: lightpink;}
+            75% {border-color: lightseagreen;}
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Hidden input field to store the interview link -->
+<input type="hidden" value="<%= Entering_ILink %>" id="link">
+
+<!-- Container for the Daily call frame -->
+<div id="call" >
+
+</div>
+
+<!-- Controls for transcription -->
+ <div id="controls">
+    <button id="start">Start transcription</button>
+    <button id="stop">Stop transcription</button>
+</div>
+
+<!-- Chatbot button -->
+<div class="position-fixed bottom-0 end-0 p-3">
+    <button class="btn rounded-circle btn-animation" style="width: 60px;  background-color: #0183ff; height: 60px;" onclick="toggleChatWindow()">
+        <img src="https://cdn-icons-png.freepik.com/512/4616/4616271.png" alt="Chatbot Icon" style="width: 40px; height: 40px;">
+    </button>
+    <a href="/Schedule_log"><button class="btn badge btn-primary "  type="button" style="border:none; background-color: #fc6a6b;" >
+        <i class="bi bi-arrow-90deg-right"></i> leave
+    </button></a>
+</div>
+
+
+
+<div id="chatWindow" class="chat-window rounded-3" style="height: 35rem; width: 25rem; ">
+
+    <div class="close-btn" onclick="toggleChatWindow()"><i class="bi bi-x-lg"></i></div>
+
+    <!-- Chatbot content goes here -->
+    <!--========================== content area starts ===================================-->
+    <div style="overflow-y: auto; height: 28rem; width: 100%;" class="scrollable-div" id="container">
+
+        <!--  Bot Entry starts-->
+
+        <div class="d-flex flex-row mb-3">
+            <div class="p-2">
+                <img class="rounded-circle card-img-top" src="assets/db_icon.png" height="30" width="30">
+            </div>
+            <div class="w-75">
+
+                        <!-- Reply Area -->
+                        <div class="card rounded-end" style="max-width: 20rem;">
+                            <div class="card-body rounded-end">
+                                <p> Hello, <%= cursor.RecruiterName %>! <br> I'm Darwinview AI Bot. I can assist you with recommending a wide range of tasks, problem statements, or questions in any technology, framework, or topic to help assess <b><%= cursor.Candidate_Details.Name %>'s</b> expertise. </p>
+                            </div>
+                        </div>
+                        <!-- Reply Area Ends -->
+
+                        
+                        <div class="card rounded-end" style="max-width: 20rem; border:none">
+                            <div class="card-body rounded-end">
+
+                                <div class="d-flex flex-row flex-wrap">
+                                    <div class="p-1"><form onsubmit="gpt(event,'profile')" id="form_data"><button type="submit" id="request_user_profile" name="request_user_profile" value=<%= cursor.Candidate_Details.Current_Status %> class="btn btn-outline-primary">Candidate Profile Based</button></form></div>
+                                    <div class="p-1"><form onsubmit="gpt(event,'resume')" id="form_data"><button type="submit" id="request_user_resume" name="request_user_resume"  class="btn btn-outline-primary" disabled>Resume Based</button></form></div>
+                                    <div class="p-1"><form onsubmit="gpt(event,'int')" id="form_data"><button type="submit" id="request_user_interviewing" name="request_user_interviewing" value=<%= cursor.Details.Role %> class="btn btn-outline-primary">Current Interview  Based</button></form></div>
+                                </div>
+
+                                <button type="button" class="btn badge text-bg-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>
+                                    <i class="bi bi-eye"></i> Preview Resume
+                                </button>
+
+                                <!-- Resume Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel"><b><%= cursor.Candidate_Details.Name %></b>'s Resume</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <iframe src=<%= cursor.Candidate_Details.Resume_Link %> width="100%" height="700px" style="border: none;"></iframe>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+            </div>
+        </div>
+
+        <!-- Bot Entry ends -->
+
+
+
+
+
+
+    </div>
+    <!--========================== content area ends =====================================-->
+
+    <!-- Form Submission (Extraction of User Message) -->
+    <div class="rounded-3" style="position: absolute; bottom: 0; left: 0; width: 100%; background-color: #0183ff;">
+        <form onsubmit="gpt(event,'gen')" id="form_data" class="p-2">
+
+            <div class="input-group ">
+                <span class="input-group-text"><img class="rounded-circle card-img-top" src="https://www.shutterstock.com/image-vector/beta-version-bubble-icon-cartoon-600nw-2242561483.jpg" height="40" width="40"></span>
+                <input type="text" class="form-control" placeholder="shoot your query.."   id="request_user" name="request_user">
+                <span class="input-group-text"><button type="submit" class="btn btn-primary"><i class="bi bi-send"></i></button></span>
+            </div>
+
+        </form>
+    </div>
+    <!-- Form Submission ends -->
+
+
+</div>
+<input type="hidden" value="response" name="response" id="response">
+
+
+<!-- Container for displaying the transcript -->
+<div id="transcript"> </div>
+
+<!-- Script to handle Daily call and transcription -->
+<script crossorigin src="https://unpkg.com/@daily-co/daily-js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const link = document.getElementById("link").value;
+        const callEl = document.getElementById("call");
+        const transcriptEl = document.getElementById("transcript");
+        const startBtn = document.getElementById("start");
+        const stopBtn = document.getElementById("stop");
+
+        const callFrame = DailyIframe.createFrame(callEl, {
+            iframeStyle: { width: "100%", height: "100vh" }
+        });
+
+        callFrame.join({
+            url: link,
+            token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJvIjp0cnVlLCJkIjoiMzQ5OWNiOWUtYTgyMi00NzdkLTg0OWUtODg4NmE4NzEyYTJmIiwiaWF0IjoxNzA4ODU3MDcyfQ.t4w0Z5efZvj4skeGa7FBHxG64CegFkL8_G8mGR6W2mU"
+        });
+
+        startBtn.addEventListener("click", () => {
+            callFrame.startTranscription();
+        });
+
+        callFrame.on("app-message", message => {
+            if (message?.fromId === "transcription" && message.data?.is_final) {
+                const p = document.createElement("p");
+                p.textContent = `${message.data.user_name}: ${message.data.text}`;
+                transcriptEl.appendChild(p);
+            }
+        });
+    });
+</script>
+
+
+<!--========================= BOT Area Starts ====================================================-->
+<script>
+
+
+    function toggleChatWindow() {
+    var chatWindow = document.getElementById('chatWindow');
+    if (chatWindow.style.display === 'none') {
+        chatWindow.style.display = 'block';
+    } else {
+        chatWindow.style.display = 'none';
+    }
+    }
+
+    
+    //GPT API
+           let form_cnt = 0;
+
+        function gpt(event,entry) {
+            event.preventDefault();
+            let req="";
+
+            if (entry==="profile") {
+                req = "Recommend me new questions on ";
+                req += '<%= cursor.Candidate_Details.Preferences.Domain %> &';
+                req += ' <%= cursor.Candidate_Details.Preferences.Role %> ';
+            } else if (entry==="resume") {
+                req = "Recommend me new questions on ";
+                req += document.getElementById('request_user_resume').value;
+            } 
+            else if(entry==="int")
+            {
+                req = "Recommend me new questions on ";
+                req += "<%= cursor.Details.Role %>"; 
+            }
+            else {
+                req = document.getElementById('request_user').value;
+            }
+
+            console.log(req);
+
+            const container = document.getElementById('container');
+            const user_html = `<div class="d-flex flex-row mb-3 flex-row-reverse">
+                                    <div class="p-2 rounded-circle">
+                                        <img class="rounded-circle card-img-top" src="https://img.freepik.com/premium-vector/anonymous-user-flat-icon-vector-illustration-with-long-shadow_520826-1932.jpg" height="30" width="30">
+                                    </div>
+                                    <div class="w-75">
+                                        <div class="card rounded-end" style="max-width: 20rem;">
+                                            <div class="card-body rounded-end">
+                                                <p id="display_query">${req}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+            container.innerHTML += user_html;
+
+            const bot_html = `<div class="d-flex flex-row mb-3">
+                                    <div class="p-2">
+                                        <img class="rounded-circle card-img-top" src="assets/db_icon.png" height="30" width="30">
+                                    </div>
+                                    <div class="w-75">
+                                        <div class="card " id="progress${form_cnt}" aria-hidden="true" style="display:none;">
+                                            <div class="card-body">
+                                                <h5 class="card-title placeholder-glow">
+                                                    <span class="placeholder col-6"></span>
+                                                </h5>
+                                                <p class="card-text placeholder-glow">
+                                                    <span class="placeholder col-7"></span>
+                                                    <span class="placeholder col-4"></span>
+                                                    <span class="placeholder col-4"></span>
+                                                    <span class="placeholder col-6"></span>
+                                                    <span class="placeholder col-8"></span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="card rounded-end" id="display_chat${form_cnt}" style="max-width: 20rem; display:none;">
+                                            <div class="card-body rounded-end">
+                                                <p id="answer${form_cnt}"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row flex-wrap">
+                                            <div class="p-1"><form onsubmit="gpt(event,'profile')" id="form_data"><button type="submit" id="request_user_profile" name="request_user_profile" value=<%= cursor.Candidate_Details.Current_Status %> class="btn btn-outline-primary">Candidate Profile Based</button></form></div>
+                                            <div class="p-1"><form onsubmit="gpt(event,'resume')" id="form_data"><button type="submit" id="request_user_resume" name="request_user_resume"  class="btn btn-outline-primary" disabled>Resume Based</button></form></div>
+                                            <div class="p-1"><form onsubmit="gpt(event,'int')" id="form_data"><button type="submit" id="request_user_interviewing" name="request_user_interviewing" value=<%= cursor.Details.Role %> class="btn btn-outline-primary">Current Interview  Based</button></form></div>
+
+                                            <button type="button" class="btn badge text-bg-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>
+                                            <i class="bi bi-eye"></i> Preview Resume
+                                            </button>
+
+                                            <!-- Resume Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel"><b><%= cursor.Candidate_Details.Name %></b>'s Resume</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <iframe src=<%= cursor.Candidate_Details.Resume_Link %> width="100%" height="700px" style="border: none;"></iframe>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <!------------------->
+
+                                        </div>
+                                    </div>
+                                </div>`;
+            container.innerHTML += bot_html;
+
+            const progress_id = `progress${form_cnt}`;
+            const answer_id = `answer${form_cnt}`;
+            const display_chat = `display_chat${form_cnt}`;
+
+            document.getElementById(progress_id).style.display = 'block';
+            req+="if it is newline/fullstop/new heading/ subheading insert '<br>' in the response where ever it is needed && every new line should be under paragraph tag. response should complete within 1024 tokens "
+            const settings = {
+                async: true,
+                crossDomain: true,
+                url: 'https://chatgpt-42.p.rapidapi.com/conversationgpt4',
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    'X-RapidAPI-Key': '16c6710c8bmsh642cf61cf8f3caep16d641jsn0eae5c63c84c',
+                    'X-RapidAPI-Host': 'chatgpt-42.p.rapidapi.com'
+                },
+                processData: false,
+                data: JSON.stringify({
+                    "messages": [
+                        {
+                            "role": "user",
+                            "content": req  
+                        }
+                    ],
+                    "system_prompt": "",
+                    "temperature": 0.9,
+                    "top_k": 10,
+                    "top_p": 0.9,
+                    "max_tokens": 1024,
+                    "web_access": false
+                })
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+                document.getElementById(progress_id).style.display = 'none';
+                document.getElementById(answer_id).innerHTML = response['result'];
+                document.getElementById(display_chat).style.display = 'block';
+            });
+
+            form_cnt++;
+            event.target.reset(); // Reset the form
+        }
+
+
+        
+        //sending data to index.js for every 2 seconds inorder to ensure the data saved to database.
+
+        let interval = setInterval( function sendData() {
+            // Get the value from the input field
+            var data = document.getElementById('transcript').innerText;
+
+            // Create a new XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            // Configure the request
+            xhr.open('POST', '/save-data', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+
+            // Send the request with the data as JSON string
+            xhr.send(JSON.stringify({ data: data}));
+            c++;
+        },2000);
+
+
+
+
+        
+
+
+</script>
+<!--========================= BOT Area Ends ====================================================-->
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>

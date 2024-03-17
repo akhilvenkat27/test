@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        body {
+            margin: 0;
+            padding-bottom: 100px; /* Height of the footer */
+            background-color: #fff4f4;
+        }
+        footer.footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #001035;
+            color: white;
+            padding: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+
+  <!--============= Navigation Section ===========================-->
+
+  <header class="p-3 mb-3 border-bottom shadow-sm sticky-top" style="background-color: white;">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center ">
+          <a href="Recruiter_Home" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+
+              <img src="assets/home_logo.png" style="height: 45px; " >
+
+          </a>
+  
+          <ul class="nav nav-underline col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 fw-light" >
+            <li><a href="Interview_Creation" class="nav-link px-2 active link-body-emphasis" >Create Interview</a></li>
+            <li><a href="Schedule_Log" class="nav-link px-2 link-body-emphasis">Schedule log</a></li>
+            <li><a href="#" class="nav-link px-2 link-body-emphasis">Smart Features</a></li>
+          </ul>
+  
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <button type="button" style="background-color: white; color: #f39999; border: none;" class=" shadow btn btn-primary position-relative rounded-circle">
+              <i class="bi bi-bell"></i>
+              </span>
+            </button>
+          </form>
+  
+          <div class="dropdown text-end">
+            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://play-lh.googleusercontent.com/B88BIRfLaHsR4FY97MOs7l4rEfpgXnUMlqc1DUzaoBI0nLmADRNYTkBtnyo0mlC5hfE" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item" href="#"><b><i class="bi bi-person-fill-gear"></i> Role:</b> Recruiter</a></li>
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!--============= Navigation Section Ends ===========================-->
+
+    <!--============== Interview Creation Form Starts===========================-->
+
+    <div class="container col-xl-10 col-xxl-8 px-4 mb-5" style="margin-top: -3%" >
+        <div class="row align-items-center g-lg-5 py-3 mb-1 ">
+          <div class="col-lg-7 text-center text-lg-start">
+            
+            <h1 class="display-7 fw-bold lh-1 text-body-emphasis mb-3"> Create an Interview </h1>
+            <p class="col-lg-10 fs-5">Recruiters can create a 1:1 interview session with candidates, allow recruiters to expereince the Darwinview AI features during the interview process!</p>
+            <img src="assets/Interview_Creations.gif" height="447" width="559">
+
+          </div>
+          <div class="col-md-10 mx-auto col-lg-5">
+            <% if(API_Vacancy==="") { %>
+            <!---==================================== Form Area Starts ========================================-->
+            <form class="p-4 p-md-5  rounded-4 bg-body-tertiary shadow-sm" action="/Creation_Handling" method="POST">
+
+                <div class="row g-3">
+
+                    <!-- Interview ID Area-->
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="Interview_ID">IID</span>
+                            <input type="text" class="form-control" placeholder="<%= New_Interview_ID %>" value="<%= New_Interview_ID %>" disabled name="Interview_ID">
+                        </div>
+                    </div>
+                    <!-- Interview ID Area-->
+
+                    <!--Role Selection-->
+                    <div class="col">
+                        
+                        <select class="form-select form-select"   name="Role" required>
+                            <option value="Software Developer (SDE1)">Software Developer (SDE 1)</option>
+                            <option value="Software Developer (SDE2)">Software Developer (SDE 2)</option>
+                            <option value="Software Developer (SDE3)">Software Developer (SDE 3)</option>
+                            <option value="Frontend Developer">Frontend Developer</option>
+                            <option value="Backend Developer">Backend Developer</option>
+                            <option value="Full Stack Developer">Full Stack Developer</option>
+                            <option value="Data Scientist">Data Scientist</option>
+                            <option value="UI/UX Designer">UI/UX Designer</option>
+                            <option value="Product Manager">Product Manager</option>
+                            <option value="Project Manager">Project Manager</option>
+                            <option value="DevOps Engineer">DevOps Engineer</option>
+                            <option value="Quality Assurance Engineer">Quality Assurance Engineer</option>
+                            <option value="Network Engineer">Network Engineer</option>
+                        </select>
+                        
+                    </div>
+                    <!--Role Selection-->
+
+                </div>
+              <!--Recruiter Name-->
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="Recruiter_Name" placeholder="name@example.com"  name="Recruiter_Name" required>
+                <label for="Recruiter_Name">Recruiter Name</label>
+              </div>
+              <!--Recruiter Name-->
+
+
+                <!--Interview Ttile-->
+              <div class="mb-3">
+                <input type="text" class="form-control" id="Interview_Title" placeholder="Interview Title"  name="Interview_Title" required>
+              </div>
+              <!--Interview Ttile-->
+
+              <!--Interview Date-->
+
+              <div class="mb-3">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="Interview_Date">Date</span>
+                    <input type="date" class="form-control"     name="Interview_Date" required >
+                 </div>
+              </div>
+              <!--Interview Date-->
+
+              <!-- Interview Timing-->
+              <div class="mb-3">
+                <label for="basic-url" class="form-label">Interview Timing</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Starts "  name="Interview_Start" required>
+                    <span class="input-group-text">to</span>
+                    <input type="text" class="form-control" placeholder="Ends "  name="Interview_End" required>
+                </div>
+              </div>
+              <!--Interview Timing-->
+
+
+
+                <!--Candidate Invite area starts-->
+                <div class="mb-3">
+                <label for="basic-url" class="form-label">Send Invite to candidate</label>
+                <div class="mb-2">
+                    <input type="email" class="form-control" id="Candidate_Email" placeholder="candidate@example.com"  name="Candidate_Email" required>
+                </div>
+                <div class="d-flex text-center justify-content-center mb-1">or</div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">CID</span>
+                    <input type="text" class="form-control" placeholder="Candidate ID"   name="Candidate_CID" required>
+                </div>
+                <small class="text-body-secondary">Enter either of fields.</small>
+              </div>
+                <!--Candidate Invite area ends-->
+
+
+
+                <!--Job Description Area Starts -->
+                <div class="form-floating mb-2" required>
+                  <textarea class="form-control" placeholder="Leave a comment here" name="JD" style="height: 100px"></textarea>
+                  <label for="floatingTextarea2" class="fw-light">Job Description</label>
+                </div>
+                <!--Job Description Area Ends -->
+
+
+
+
+
+
+
+              <button class="w-100 btn btn-lg btn-primary" type="submit">Create Invitation</button>
+            </form>
+           
+            <!---==================================== Form Area Ends ========================================-->
+            <%  } else { %>
+
+                <div class="card" style="width: 38rem; border: none;">
+                  <img src="assets/server_busy.png" alt="..." >
+                  <div class="card-body">
+                    <p class="card-text text-center"><i class="bi bi-ban"></i> No Meeting Vacancies! Please try again later.</p>
+                  </div>
+                </div>
+  
+
+            <% } %>
+          </div>
+        </div>
+      </div>
+  
+      <!--============== Interview Creation Form Ends ===========================-->
+    
+
+
+
+    <!-- Footer Section -->
+    <footer class="footer rounded-top-4">
+        <div class="container text-center">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary active"><span style="color:white">Home</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><span style="color:white">Features</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><span style="color:white">Pricing</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><span style="color:white">FAQs</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><span style="color:white">About</span></a></li>
+            </ul>
+            <p class="text-center text-body-secondary"><span style="color:white">&copy; 2024 Darwinview, Inc</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>

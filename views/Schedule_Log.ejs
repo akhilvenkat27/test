@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        body {
+            margin: 0;
+            padding-bottom: 100px; /* Height of the footer */
+            /* background-color: #fff4f4; */
+        }
+        footer.footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #001035;
+            color: white;
+            padding: 20px 0;
+        }
+        .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .btn-bd-primary {
+        --bd-violet-bg: #712cf9;
+        --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+        --bs-btn-font-weight: 600;
+        --bs-btn-color: var(--bs-white);
+        --bs-btn-bg: var(--bd-violet-bg);
+        --bs-btn-border-color: var(--bd-violet-bg);
+        --bs-btn-hover-color: var(--bs-white);
+        --bs-btn-hover-bg: #6528e0;
+        --bs-btn-hover-border-color: #6528e0;
+        --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+        --bs-btn-active-color: var(--bs-btn-hover-color);
+        --bs-btn-active-bg: #5a23c8;
+        --bs-btn-active-border-color: #5a23c8;
+      }
+
+      .bd-mode-toggle {
+        z-index: 1500;
+      }
+
+      .bd-mode-toggle .dropdown-menu .active .bi {
+        display: block !important;
+      }
+      .scroll-container::-webkit-scrollbar {
+        width: 0;  /* Hide scrollbar */
+      }
+
+      .scroll-container::-webkit-scrollbar-track {
+        background: transparent;  /* Hide scrollbar track */
+      }
+      .btn-animation
+        {
+          animation: mymove 4s infinite;
+        }
+        @keyframes mymove {
+            25% {border-color: lightblue;}
+            50% {border-color: lightpink;}
+            75% {border-color: lightseagreen;}
+        }
+      
+    </style>
+</head>
+<body>
+
+
+  <!--============= Navigation Section ===========================-->
+
+  <header class="p-3 mb-3 border-bottom shadow-sm sticky-top" style="background-color: white;" >
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center ">
+          <a href="Recruiter_Home" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+
+              <img src="assets/home_logo.png" style="height: 45px; " >
+
+          </a>
+  
+          <ul class="nav nav-underline col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 fw-light" >
+            <li><a href="Interview_Creation" class="nav-link px-2  link-body-emphasis" >Create Interview</a></li>
+            <li><a href="Schedule_Log" class="nav-link px-2 active link-body-emphasis">Schedule log</a></li>
+            <li><a href="#" class="nav-link px-2 link-body-emphasis">Smart Features</a></li>
+          </ul>
+  
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <button type="button" style="background-color: white; color: #f39999; border: none;" class=" shadow btn btn-primary position-relative rounded-circle">
+              <i class="bi bi-bell"></i>
+              </span>
+            </button>          
+          </form>
+  
+          <div class="dropdown text-end">
+            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="https://play-lh.googleusercontent.com/B88BIRfLaHsR4FY97MOs7l4rEfpgXnUMlqc1DUzaoBI0nLmADRNYTkBtnyo0mlC5hfE" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!--============= Navigation Section Ends ===========================-->
+
+
+    <main>
+
+        <!--======================== Hero section Starts ==================-->
+  
+        <div class="d-flex flex-row mb-3 justify-content-between" style="background-image: url('assets/h.png'); background-size: cover; background-position: center; margin-top: -1%;">
+            <div class="p-2"></div>
+            <div class="p-2">
+    
+                <div class="d-flex flex-row mb-3">
+                    <div class="p-2">
+    
+                        
+                    </div>
+                    <div class="p-3">
+                        
+                        <div class="col-lg-6 col-md-8 mx-auto text-center">
+    
+    
+                            <h1 class="fw-light">Hello,
+    
+                              <svg width="355" height="62">
+                                <defs>
+                                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#4285f4" />
+                                    <stop offset="50%" style="stop-color:#9b72cb" />
+                                    <stop offset="100%" style="stop-color:#d96570" />
+                                  </linearGradient>
+                                </defs>
+                                <text x="10" y="40" font-family="Arial" font-size="40" fill="url(#gradient)"><%= Recruiter_details.Name %></text>
+                              </svg>
+    
+                            </h1>
+    
+                            <p class="lead text-body-secondary">Navigate through the interviews created by you. Lets <code>Hire</code> the talent beyond the limits through the world of Darwinview.</p>
+                            <p>
+                                <a href="#log"><button type="button" class="btn btn-outline-secondary border-2 btn px-4 rounded-5 btn-animation justify-content-center" style="border-color: sandybrown;"><i class="bi bi-chevron-double-down"></i> Navigate Now</button></a>
+                            </p>
+    
+                        </div>
+    
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+            <div class="p-2"></div>
+        </div>
+
+            <!--======================== Hero section ends ==================-->
+
+    
+    
+        
+
+    
+        <!--================================ Schedule Log Starts ========================================================-->
+
+        <div class="d-flex flex-row mb-3 justify-content-center" >
+            <div class="p-2">
+                
+
+
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true"><i class="bi bi-clock-history"></i> Upcoming</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="bi bi-check2-circle"></i> Completed</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false"><i class="bi bi-slash-circle"></i> Abandoned</button>
+                    </li>
+
+                </ul>
+                
+                  <div class="tab-content" id="pills-tabContent">
+
+                    <!--====================== Upcoming Schedule log starts =========================-->
+
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+
+                      <% if(Upcoming!="") { %>
+
+                        <% Upcoming.forEach((data)=>{ %>
+                        <div class="card text-center mt-3 mb-3" style="width: 58rem; ">
+                            <div class="card-header" style=" background-color:whitesmoke;">
+                              <b><%= data.Details.Interview_Title %></b>
+                            </div>
+                            <div class="card-body">
+                              
+
+
+                              <div class="d-flex flex-row mb-3 justify-content-around">
+                                <div class="p-2">
+                                  <ul class="list-group shadow" style="width: 25rem;">
+                                    <li class="list-group-item active d-flex justify-content-between align-items-center" style="background-color: #d96570; border:none">
+                                      Interview Details
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Interviewing Role:
+                                      <span class="badge  rounded-pill" style="background-color: #f39999;"><%= data.Details.Role%></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Date:
+                                      <span class="badge  rounded-pill" style="background-color: #f39999;"><%= data.Details.Interview_Date%></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Time:
+                                      <span class="badge  rounded-pill" style="background-color: #f39999;"><%= data.Details.Interview_Start%> - <%= data.Details.Interview_End%> </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="p-2 ">
+                                  
+                                  <ul class="list-group" style="width: 25rem;">
+                                    <li class="list-group-item active d-flex justify-content-between align-items-center" style="background-color: #0183ff; border:none">
+                                      Candidate Profile
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Candidate ID: 
+                                      <span class="badge text-bg-primary rounded-pill"> <%= data.Candidate_Details.ID %></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Candidate Name: 
+                                      <span class="badge text-bg-primary rounded-pill"> <%= data.Candidate_Details.Name %> </span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Contact:
+                                      <span class="badge text-bg-primary rounded-pill"> <%= data.Candidate_Details.email %> </span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Darwinview Rating:
+                                      <span class="badge text-bg-primary rounded-pill"> <% if(data.Candidate_Details.Rating){ %><%= data.Candidate_Details.Rating %> <% } else { %> N/A  <% } %></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Current Status:
+                                      <span class="badge text-bg-primary rounded-pill"> <%= data.Candidate_Details.Current_Status %> </span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Resume:
+                                        <button type="button" class="btn badge text-bg-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal<%= data.InterviewID %>">
+                                        <i class="bi bi-eye"></i> Preview 
+                                        </button>
+
+                                        <!-- Resume Modal -->
+                                        <div class="modal fade" id="exampleModal<%= data.InterviewID %>" tabindex="-1" aria-labelledby="exampleModalLabel<%= data.InterviewID %>" aria-hidden="true">
+                                          <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel<%= data.InterviewID %>"><b><%= data.Candidate_Details.Name %></b>'s Resume</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                              </div>
+                                              <div class="modal-body">
+                                                <iframe src=<%= data.Candidate_Details.Resume_Link %> width="100%" height="700px" style="border: none;"></iframe>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <!------------------->
+
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+
+  
+
+                            <div class="d-flex flex-row-reverse">
+
+
+                              <div class="p-2"><button type="button" class="btn btn-danger badge" data-bs-toggle="modal" data-bs-target="#delete<%= data.InterviewID %>"><i class="bi bi-trash "  ></i> Invitation</button></div>
+                              
+
+                             
+
+                              <% if(data.Interview_Response && !data.PreResult) { %>
+                                
+                                <form action="/Evaluate_Result" method="POST">
+                                  <input type="hidden" name="response_IID" value="<%= data.InterviewID %>">
+                                  <div class="p-2">
+                                      <button type="submit" class="btn btn-success badge"><i class="bi bi-magic"></i> Evaluate</button>
+                                  </div>
+                              </form>
+                              
+                              <% } else { %>
+                                <div class="p-2"><button type="button" class="btn btn-success badge" disabled><i class="bi bi-magic"></i> Evaluate</button></div>
+                                <% } %>
+
+                             
+
+                              <% if(data.Details.Interview_Link!="Link Expired" && data.Details.Interview_Date===formattedDate && !data.PreResult ) { %>
+
+                                <div class="p-2">
+                                  <form action="/Handle_Entrance" method="POST">
+                                    <input type="hidden" value="<%= data.InterviewID %>" name="IID">
+                                    <input type="hidden" value="<%= data.Details.Interview_Link %>" name="ILink">
+                                    <button type="submit" class="btn btn-primary badge"><i class="bi bi-box-arrow-in-right"></i> Enter Interview Now</button>
+                                  </form>
+                                </div>
+
+                              <% } %>
+                             
+
+                            </div>
+
+                            <!-- Delete Modal starts-->
+                            <div class="modal fade" id="delete<%= data.InterviewID %>" tabindex="-1" aria-labelledby="exampleModalLabel<%= data.InterviewID %>" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel<%= data.InterviewID %>">Delete - <%= data.InterviewID %></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    Are you sure you want delete the interview invitation?
+                                  </div>
+                                  <div class="modal-footer">
+
+                                    <form action="/delete_invitation" method="POST">
+                                      <input type="hidden" value="<%= data.InterviewID %>" name="Delete_IID">
+                                      <button type="submit" class="btn btn-danger">Delete Invitation</button>
+                                    </form>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!--Delete Modal Ends-->
+
+                            <% if(data.PreResult) { %>
+
+                              
+                              <!----------------- Interview Results Starts ------------------------------>
+
+                              <div class="accordion accordion-flush border mt-3 " id="Interview_Results<%= data.InterviewID %>">
+
+                                <div class="accordion-item">
+                                  <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#inner<%= data.InterviewID %>" aria-expanded="false" aria-controls="flush-collapseOne<%= data.InterviewID %>">
+                                      <i class="bi bi-clipboard-data"></i> &nbsp; Engine Results
+                                    </button>
+                                  </h2>
+
+                                  <div id="inner<%= data.InterviewID %>" class="accordion-collapse collapse" data-bs-parent="#Interview_Results<%= data.InterviewID %>">
+                                    <div class="accordion-body" style="background-color: #fff4f4;">
+
+                                      <div class="d-flex flex-row-reverse">
+
+                                        <div class="p-2"><button type="button" class="btn rounded-4 border btn-sm fw-light"><i class="bi bi-download"></i> &nbsp; Download Report</button></div>
+
+                                      </div>
+                                      <br>
+
+                                      <div class="d-flex flex-row mb-3 justify-content-between">
+                                        <div class="text-center shadow-sm  rounded-4 p-3  border-start border-info" style="background-color: white;">JD & Resume Match</span> <br><span style="color: #0183ff;">Coming Soon</span> </div>
+                                        <div class="text-center shadow-sm  rounded-4 p-3  border-start border-info" style="background-color: white;">Relevance Rate</span> <br><span style="color: #0183ff;"><%= data.PreResult.Relevance %>%</span> </div>
+                                        <div class="text-center shadow-sm  rounded-4 p-3  border-start border-info" style="background-color: white;">Communicational Rate</span> <br><span style="color: #0183ff;"><%= data.PreResult.Communication %>%</span> </div>
+                                        <div class="text-center shadow-sm  rounded-4 p-3 border-start  border-success" style="background-color: white;">Fitness score</span> <br><span style="color: #0183ff;"><%= data.PreResult.Fitness %>%</span> </div>
+
+                                      </div>
+
+                                      <br>
+                                      <!--feedback area starts-->
+                                      <div class="alert alert-info text-center" role="alert">
+                                        <i class="bi bi-chat-left-text"></i> Feedbacks
+                                      </div>
+
+                                      <div class="accordion accordion-flush" id="accordionFlushExample<%= data.InterviewID%>">
+                                        <div class="accordion-item">
+                                          <h2 class="accordion-header">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne<%= data.InterviewID %>" aria-expanded="false" aria-controls="flush-collapseOne<%= data.InterviewID %>">
+                                              From Darwinview AI
+                                            </button>
+                                          </h2>
+                                          <div id="flush-collapseOne<%= data.InterviewID %>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample<%= data.InterviewID%>">
+                                            <div class="accordion-body"><%= data.PreResult.AIFeedback %></div>
+                                          </div>
+                                      </div>
+
+
+                                      </div>
+                                      <!--feedback area Ends-->
+
+
+                                      <br>
+      
+                                      <!-- Button trigger modal -->
+                                      <% if(!data.Result) {%>
+                                      <button type="button" class="btn btn-primary badge" data-bs-toggle="modal" data-bs-target="#postresults<%=data.InterviewID%>">
+                                        Post Results
+                                      </button>
+                                      <% } %>
+                                      <!-- Modal -->
+                                      <div class="modal fade" id="postresults<%= data.InterviewID %>" tabindex="-1" aria-labelledby="postresults<%= data.InterviewID %>inner" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h1 class="modal-title fs-5" id="postresults<%= data.InterviewID %>inner">Final Results</h1>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <form action="/Final_Result" method="POST">
+                                              <div class="form-floating">
+                                                <textarea class="form-control" placeholder="Leave a comment here" name="RecruiterFeedback" style="height: 100px" required></textarea>
+                                                <label for="floatingTextarea2"> Tag your feedback here ! <span style="color: red;">*</span></label>
+                                              </div>
+                                              <br>
+                                              <div class="mb-3">
+                                                <label for="formGroupExampleInput" class="form-label"> Candidate Selection <span style="color: red;">*</span> </label>
+                                                <br>
+                                                <select class="form-select" aria-label="Default select example" name="Selection" required>
+                                                  <option value="Selected">Selected</option>
+                                                  <option value="Pending">Pending</option>
+                                                  <option value="Rejected">Rejected</option>
+                                                </select>
+                                              </div>
+                                              <input type="hidden" name="Result_IID" value=<%= data.InterviewID %> >
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="submit" class="btn btn-primary">Post</button>
+                                            </div>
+                                          </form>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      
+
+                                    </div>
+                                  </div>
+
+                                </div>
+
+                              </div>
+
+                              <!--======================================== Results Ends ===================================================== -->
+                              <% } %>
+
+
+
+
+                            </div>
+                            <div class="card-footer text-body-secondary">
+                              <%= data.status %>
+                            </div>
+                        </div>
+                        <br>
+                        
+                        <% }); %>
+
+                        <% } else {%>
+
+                          <div class="card" style="width: 28rem; border: none;">
+                            <img src="assets/not_found.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <p class="card-text text-center">No Interviews Found !</p>
+                            </div>
+                          </div>
+                          <br>
+
+                        <% } %>
+
+                    </div>
+
+                    <!--====================== Upcoming Schedule log ends =========================-->
+
+
+
+                    <!--======================= Completed Schedule log starts   =======================-->
+
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0" >
+
+                      <% if(Completed!="") { %>
+                        
+                      <% Completed.forEach((data)=>{ %>
+                        <div class="card text-center mt-3 mb-3" style="width: 58rem; ">
+                            <div class="card-header" style=" background-color:whitesmoke;">
+                              <b><%= data.Details.Interview_Title %></b>
+                            </div>
+                            <div class="card-body">
+                              
+
+
+                              <div class="d-flex flex-row mb-3 justify-content-around">
+                                <div class="p-2">
+                                  <ul class="list-group" style="width: 25rem;">
+                                    <li class="list-group-item active d-flex justify-content-between align-items-center" style="background-color: #d96570; border:none">
+                                      Interview Details
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Interviewing Role:
+                                      <span class="badge  rounded-pill" style="background-color: #f39999;"><%= data.Details.Role%></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Date:
+                                      <span class="badge  rounded-pill" style="background-color: #f39999;"><%= data.Details.Interview_Date%></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Time:
+                                      <span class="badge  rounded-pill" style="background-color: #f39999;"><%= data.Details.Interview_Start%> - <%= data.Details.Interview_End%> </span>
+                                    </li>
+                                    <% if(data.Result) { %>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Selection:
+                                      <% if (data.Result.Selection == "Selected") { %>
+                                        <span class="badge rounded-pill text-bg-success">Selected</span>
+                                      <% } else if (data.Result.Selection == "Pending") { %>
+                                        <span class="badge rounded-pill text-bg-warning">Pending</span>
+                                      <% } else { %>
+                                        <span class="badge rounded-pill text-bg-danger">No longer under consideration</span>
+                                      <% } %>
+                                    </li> 
+                                    <% } %>
+                                  </ul>
+                                </div>
+                                <div class="p-2">
+                                  
+                                  <ul class="list-group" style="width: 25rem;">
+                                    <li class="list-group-item active d-flex justify-content-between align-items-center" style="background-color: #0183ff; border:none">
+                                      Candidate Profile
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Candidate ID: 
+                                      <span class="badge text-bg-primary rounded-pill"> <%= data.Candidate_Details.ID %></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Candidate Name: 
+                                      <span class="badge text-bg-primary rounded-pill"> <%= data.Candidate_Details.Name %> </span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Contact:
+                                      <span class="badge text-bg-primary rounded-pill"> <%= data.Candidate_Details.email %> </span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Darwinview Rating:
+                                      <span class="badge text-bg-primary rounded-pill"> <% if(data.Candidate_Details.Rating){ %><%= data.Candidate_Details.Rating %> <% } else { %> N/A  <% } %></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Current Status:
+                                      <span class="badge text-bg-primary rounded-pill"> <%= data.Candidate_Details.Current_Status %> </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+
+
+                              <% if(data.PreResult) { %>
+
+                              
+                                <!----------------- Interview Results Starts ------------------------------>
+  
+                                <div class="accordion accordion-flush border mt-3 " id="Interview_Results<%= data.InterviewID %>">
+  
+                                  <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#inner<%= data.InterviewID %>" aria-expanded="false" aria-controls="flush-collapseOne<%= data.InterviewID %>">
+                                        <i class="bi bi-clipboard-data"></i> &nbsp; Engine Results
+                                      </button>
+                                    </h2>
+  
+                                    <div id="inner<%= data.InterviewID %>" class="accordion-collapse collapse" data-bs-parent="#Interview_Results<%= data.InterviewID %>">
+                                      <div class="accordion-body" style="background-color: #fff4f4;">
+  
+                                        <div class="d-flex flex-row-reverse">
+  
+                                          <div class="p-2"><button type="button" class="btn rounded-4 border btn-sm fw-light"><i class="bi bi-download"></i> &nbsp; Download Report</button></div>
+  
+                                        </div>
+                                        <br>
+  
+                                        <div class="d-flex flex-row mb-3 justify-content-between">
+                                          <div class="text-center shadow-sm  rounded-4 p-3  border-start border-info" style="background-color: white;">JD & Resume Match</span> <br><span style="color: #0183ff;">Coming Soon</span> </div>
+                                          <div class="text-center shadow-sm  rounded-4 p-3  border-start border-info" style="background-color: white;">Relevance Rate</span> <br><span style="color: #0183ff;"><%= data.PreResult.Relevance %>%</span> </div>
+                                          <div class="text-center shadow-sm  rounded-4 p-3  border-start border-info" style="background-color: white;">Communicational Rate</span> <br><span style="color: #0183ff;"><%= data.PreResult.Communication %>%</span> </div>
+                                          <div class="text-center shadow-sm  rounded-4 p-3 border-start  border-success" style="background-color: white;">Fitness score</span> <br><span style="color: #0183ff;"><%= data.PreResult.Fitness %>%</span> </div>
+  
+                                        </div>
+  
+                                        <br>
+                                        <!--feedback area starts-->
+                                        <div class="alert alert-info text-center" role="alert">
+                                          <i class="bi bi-chat-left-text"></i> Feedbacks
+                                        </div>
+  
+                                        <div class="accordion accordion-flush" id="accordionFlushExample<%= data.InterviewID%>">
+                                          <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne<%= data.InterviewID %>" aria-expanded="false" aria-controls="flush-collapseOne<%= data.InterviewID %>">
+                                                From Darwinview AI
+                                              </button>
+                                            </h2>
+                                            <div id="flush-collapseOne<%= data.InterviewID %>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample<%= data.InterviewID%>">
+                                              <div class="accordion-body"><%= data.PreResult.AIFeedback %></div>
+                                            </div>
+                                        </div>
+  
+  
+                                        </div>
+                                        <!--feedback area Ends-->
+  
+  
+                                        <br>
+                                      </div>
+                                    </div>
+  
+                                  </div>
+  
+                                </div>
+  
+                                <!--======================================== Results Ends ===================================================== -->
+                                <% } %>
+
+                             
+                            
+
+
+
+
+                            </div>
+                            <div class="card-footer text-body-secondary">
+                              <%= data.status %>
+                            </div>
+                        </div>
+                        <br>
+                        
+                        <% }); %>
+
+                        <% } else {%>
+
+                          <div class="card" style="width: 28rem; border: none;">
+                            <img src="assets/not_found.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <p class="card-text text-center">No Interviews Found !</p>
+                            </div>
+                          </div>
+                          <br>
+
+                        <% } %>
+
+
+                    </div>
+
+                    <!--======================= Completed Schedule log ends   =======================-->
+
+
+
+                    <!--======================= Abandoned Schedule log starts   =======================-->
+
+                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+
+                      <% if(Abandoned!="") { %>
+
+                      <% Abandoned.forEach((data)=>{ %>
+                        <div class="card text-center mt-3 mb-3" style="width: 58rem; ">
+                            <div class="card-header" style=" background-color:whitesmoke;">
+                              <b><%= data.Details.Interview_Title %></b>
+                            </div>
+                            <div class="card-body">
+                              
+
+
+                              <div class="d-flex flex-row mb-3 justify-content-around">
+                                <div class="p-2">
+                                  <ul class="list-group" style="width: 25rem;">
+                                    <li class="list-group-item active d-flex justify-content-between align-items-center" style="background-color: #d96570; border:none">
+                                      Interview Details
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Interviewing Role:
+                                      <span class="badge  rounded-pill" style="background-color: #f39999;"><%= data.Details.Role%></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Date:
+                                      <span class="badge  rounded-pill" style="background-color: #f39999;"><%= data.Details.Interview_Date%></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Time:
+                                      <span class="badge  rounded-pill" style="background-color: #f39999;"><%= data.Details.Interview_Start%> - <%= data.Details.Interview_End%> </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="p-2">
+                                  
+                                  <ul class="list-group" style="width: 25rem;">
+                                    <li class="list-group-item active d-flex justify-content-between align-items-center" style="background-color: #0183ff; border:none">
+                                      Candidate Profile
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Candidate ID: 
+                                      <span class="badge text-bg-primary rounded-pill"> <%= data.Candidate_Details.ID %></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Candidate Name: 
+                                      <span class="badge text-bg-primary rounded-pill"> <%= data.Candidate_Details.Name %> </span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Contact:
+                                      <span class="badge text-bg-primary rounded-pill"> <%= data.Candidate_Details.email %> </span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Darwinview Rating:
+                                      <span class="badge text-bg-primary rounded-pill"> <% if(data.Candidate_Details.Rating){ %><%= data.Candidate_Details.Rating %> <% } else { %> N/A  <% } %></span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                      Current Status:
+                                      <span class="badge text-bg-primary rounded-pill"> <%= data.Candidate_Details.Current_Status %> </span>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+
+                              <div class="p-3 rounded-4">
+                                <% if(data.Details.Interview_Link!="Link Expired") { %>
+                                  <p class="card-text"><b><i class="bi bi-link-45deg"></i> Interview Link:</b>
+  
+                                  <div class="input-group flex-nowrap">
+                                    <input type="text" class="form-control" style="background-color: white;" id="textToCopy" placeholder=<%= data.Details.Interview_Link %> value=<%= data.Details.Interview_Link %> disabled>
+                                    <span class="input-group-text" id="addon-wrapping" style="background-color: whitesmoke;"><button class="btn" onclick="copyToClipboard()"><i class="bi bi-copy"></i></button></span>
+                                  </div>
+                                </p>
+                                <script>
+                                  function copyToClipboard() {
+                                    var textToCopy = document.getElementById("textToCopy<%=data.InterviewID%>").value;
+                                    var tempInput = document.createElement("textarea");
+                                    tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+                                    tempInput.value = textToCopy;
+                                    document.body.appendChild(tempInput);
+                                    tempInput.select();
+                                    document.execCommand("copy");
+                                    document.body.removeChild(tempInput);
+                                  }
+                                </script>
+                                <% } %>
+                             
+                            </div>
+
+
+
+
+
+                            </div>
+                            <div class="card-footer text-body-secondary">
+                              <%= data.status %>
+                            </div>
+                        </div>
+                        <br>
+                        
+                        <% }); %>
+
+                        <% } else {%>
+
+                          <div class="card" style="width: 28rem; border: none;">
+                            <img src="assets/not_found.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <p class="card-text text-center">No Interviews Found !</p>
+                            </div>
+                          </div>
+                          <br>
+
+                        <% } %>
+
+                    </div>
+                    <!--======================= Abandoned Schedule log Ends   =======================-->
+
+
+                  </div>
+            </div>
+
+          </div>
+  
+            <!--================================ Schedule Log Ends ========================================================-->
+
+        
+            
+    
+      </main>
+
+
+
+
+
+
+
+    <!-- Footer Section -->
+    <footer class="footer rounded-top-4 mt-3" id="log">
+        <div class="container text-center">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><span style="color:white">Home</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><span style="color:white">Features</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><span style="color:white">Pricing</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><span style="color:white">FAQs</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary"><span style="color:white">About</span></a></li>
+            </ul>
+            <p class="text-center text-body-secondary"><span style="color:white">&copy; 2024 Darwinview, Inc</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script>
+      var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl)
+      });
+    </script>
+
+
+  </body>
+</html>
